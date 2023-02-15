@@ -61,8 +61,14 @@ function dotsChangesRight() {
       dotsSlideSelected[j + 1].classList.add("dot_selected");
       dotsSlideSelected[j].classList.remove("dot_selected");
       break;
-    } else if (dotsSlideSelected[3].classList.contains("dot_selected")) {
-      dotsSlideSelected[3].classList.remove("dot_selected");
+    } else if (
+      dotsSlideSelected[dotsSlideSelected.length - 1].classList.contains(
+        "dot_selected"
+      )
+    ) {
+      dotsSlideSelected[dotsSlideSelected.length - 1].classList.remove(
+        "dot_selected"
+      );
       dotsSlideSelected[0].classList.add("dot_selected");
       break;
     }
@@ -73,7 +79,9 @@ function dotsChangesLeft() {
   for (let j = 0; j < dotsSlideSelected.length; j++) {
     if (dotsSlideSelected[0].classList.contains("dot_selected")) {
       dotsSlideSelected[0].classList.remove("dot_selected");
-      dotsSlideSelected[3].classList.add("dot_selected");
+      dotsSlideSelected[dotsSlideSelected.length - 1].classList.add(
+        "dot_selected"
+      );
       break;
     } else if (dotsSlideSelected[j].classList.contains("dot_selected")) {
       dotsSlideSelected[j - 1].classList.add("dot_selected");
