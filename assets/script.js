@@ -19,6 +19,7 @@ const slides = [
 ];
 
 // Generation des clics _____________________________
+// Differencier Clics boutons gauche ou droit? \o/
 
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
@@ -31,7 +32,7 @@ arrowRight.addEventListener("click", () => {
   dotsChangesRight();
 });
 
-// Generation de slides ___________________________
+// Generation de slides/dots ___________________________
 
 function genererDots(slides) {
   for (let i in slides) {
@@ -53,6 +54,33 @@ dotsSlideSelectedStart.classList.add("dot_selected");
 const dotsSlideSelectedAll = document.querySelectorAll(".dot");
 const dotsSlideSelected = Array.from(dotsSlideSelectedAll);
 
+// /\ Peut-on utiliser la NodeList du "querySelectorAll" en array brut ou doit-on passer par un Array.from()?
+//
+
+// Gestion et fonction image ____________________________________________
+
+const img = document.querySelector(".banner-img");
+img.src = `./assets/images/slideshow/${slides[0].image}`;
+
+function image(j) {
+  img.src = `./assets/images/slideshow/${slides[j].image}`;
+}
+
+//   /\ Galère à cause du QuerySelectorAll et getElementByClassName________________ (Nodelist ou [] ...)
+//
+
+// Gestion et fonction du texte __________________________________________
+// Création de l'élement p avant de lancer la fonction!
+
+const bannerP = document
+  .getElementById("banner")
+  .appendChild(document.createElement("p"));
+bannerP.innerHTML = `${slides[0].tagLine}`;
+
+function P(j) {
+  bannerP.innerHTML = `${slides[j].tagLine}`;
+}
+
 // Fonctions des clics ____________________________________________
 
 function dotsChangesRight() {
@@ -60,6 +88,8 @@ function dotsChangesRight() {
     if (dotsSlideSelected[j].classList.contains("dot_selected")) {
       dotsSlideSelected[j + 1].classList.add("dot_selected");
       dotsSlideSelected[j].classList.remove("dot_selected");
+      image(j + 1);
+      P(j + 1);
       break;
     } else if (
       dotsSlideSelected[dotsSlideSelected.length - 1].classList.contains(
@@ -70,6 +100,8 @@ function dotsChangesRight() {
         "dot_selected"
       );
       dotsSlideSelected[0].classList.add("dot_selected");
+      image(0);
+      P(0);
       break;
     }
   }
@@ -82,10 +114,14 @@ function dotsChangesLeft() {
       dotsSlideSelected[dotsSlideSelected.length - 1].classList.add(
         "dot_selected"
       );
+      image(dotsSlideSelected.length - 1);
+      P(dotsSlideSelected.length - 1);
       break;
     } else if (dotsSlideSelected[j].classList.contains("dot_selected")) {
       dotsSlideSelected[j - 1].classList.add("dot_selected");
       dotsSlideSelected[j].classList.remove("dot_selected");
+      image(j - 1);
+      P(j - 1);
       break;
     }
   }
