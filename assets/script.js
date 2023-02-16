@@ -85,17 +85,16 @@ function P(j) {
 
 function dotsChangesRight() {
   for (let j = 0; j < dotsSlideSelected.length; j++) {
-    if (dotsSlideSelected[j].classList.contains("dot_selected")) {
+    if (
+      j < dotsSlideSelected.length - 1 &&
+      dotsSlideSelected[j].classList.contains("dot_selected")
+    ) {
       dotsSlideSelected[j + 1].classList.add("dot_selected");
       dotsSlideSelected[j].classList.remove("dot_selected");
       image(j + 1);
       P(j + 1);
       break;
-    } else if (
-      dotsSlideSelected[dotsSlideSelected.length - 1].classList.contains(
-        "dot_selected"
-      )
-    ) {
+    } else if (dotsSlideSelected[j].classList.contains("dot_selected")) {
       dotsSlideSelected[dotsSlideSelected.length - 1].classList.remove(
         "dot_selected"
       );
