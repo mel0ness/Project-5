@@ -113,6 +113,28 @@ function dotsChangesRight() {
   }
 }
 
+// Deuxième possibilité______________________________________________
+
+// let ind = 0;
+
+// function dotsChangesRight() {
+//   if (ind == slides.length - 1) {
+//     dotsSlideSelected[0].classList.add("dot_selected");
+//     dotsSlideSelected[ind].classList.remove("dot_selected");
+//     image(0);
+//     P(0);
+//     ind = 0;
+//   } else {
+//     dotsSlideSelected[ind].classList.remove("dot_selected");
+//     dotsSlideSelected[ind + 1].classList.add("dot_selected");
+//     image(ind + 1);
+//     P(ind + 1);
+//     ind++;
+//   }
+// }
+
+// _______________________________________________________________________________
+
 function dotsChangesLeft() {
   for (let j = 0; j < dotsSlideSelected.length; j++) {
     if (dotsSlideSelected[0].classList.contains("dot_selected")) {
